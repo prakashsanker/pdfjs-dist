@@ -2200,7 +2200,7 @@ var PDFFindController = function PDFFindControllerClosure() {
       this.pageMatches[pageIndex] = matches;
     },
 
-		modifiedCalcFindPhraseMatch: function PDFFindController_modifiedCalcFindPhraseMatch(query, pageIndex, pageContent, tag) {
+		modifiedCalcFindPhraseMatch: function PDFFindController_modifiedCalcFindPhraseMatch(query, pageIndex, pageContent, tag, color) {
 			var matches = [];
 			var queryLen = query.length;
 			var matchIdx = -queryLen;
@@ -2236,10 +2236,16 @@ var PDFFindController = function PDFFindControllerClosure() {
 				this.pageTagMatches[pageIndex][tag]["matchLengths"] = [];
 			}
 
+			if (typeof this.pageTagMatches[pageIndex][tag]["color"] === "undefined") {
+				this.pageTagMatches[pageIndex][tag]["color"] = "";
+			}
+
 
 			this.pageTagMatches[pageIndex][tag]["matches"].push(matches);
 			this.pageTagMatches[pageIndex][tag]["tagTextArr"].push(query);
 			this.pageTagMatches[pageIndex][tag]["matchLengths"].push(query.length);
+			this.pageTagMatches[pageIndex][tag]["color"] = color;
+
 			// this.pageTagMatches[pageIndex][tag]["matchesLength"] = tagMatchesLength;
 			// this.pageTagMatches[pageIndex][tag]["tagText"] = query;
 		},
