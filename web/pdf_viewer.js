@@ -2244,13 +2244,13 @@ var PDFFindController = function PDFFindControllerClosure() {
 			// this.pageTagMatches[pageIndex][tag]["tagText"] = query;
 		},
 
-		modifiedCalcFindMatch: function PDFFindController_modifiedCalcFindMatch(pageIndex, query, tag) {
+		modifiedCalcFindMatch: function PDFFindController_modifiedCalcFindMatch(pageIndex, query, tag, color) {
 			var pageContent = this.normalize(this.pageContents[pageIndex]);
 			var caseSensitive = true;
 			var phraseSearch = true;
 			var queryLen = query.length;
 
-			this.modifiedCalcFindPhraseMatch(query, pageIndex, pageContent, tag);
+			this.modifiedCalcFindPhraseMatch(query, pageIndex, pageContent, tag, color);
 
 		},
 
@@ -2292,6 +2292,7 @@ var PDFFindController = function PDFFindControllerClosure() {
 			this.pageTagMatches[pageIndex][tag]["matches"] = tagMatches;
 			this.pageTagMatches[pageIndex][tag]["matchesLength"] = tagMatchesLength;
 			this.pageTagMatches[pageIndex][tag]["tagText"] = query;
+			this.pageTagMatches[pageIndex][tag]["color"] = color;
 		},
 
 /*
@@ -2395,7 +2396,7 @@ var PDFFindController = function PDFFindControllerClosure() {
 		modifiedCalcFindMatches: function PDFFindController_modifiedFindCalcFindMatches(state) {
 			for (var i = 0; i < state.taggedTextObjects.length; i++) {
 				var taggedTextObj = state.taggedTextObjects[i];
-				this.modifiedCalcFindMatch(0, taggedTextObj.tagged_text, taggedTextObj.tag_name);
+				this.modifiedCalcFindMatch(0, taggedTextObj.tagged_text, taggedTextObj.tag_name, taggedTextObj.color);
 			}
 			return this.pageTagMatches;
 		},
