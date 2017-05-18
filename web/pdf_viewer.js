@@ -2402,7 +2402,7 @@ var PDFFindController = function PDFFindControllerClosure() {
 		modifiedCalcFindMatches: function PDFFindController_modifiedFindCalcFindMatches(state) {
 			for (var i = 0; i < state.taggedTextObjects.length; i++) {
 				var taggedTextObj = state.taggedTextObjects[i];
-				this.modifiedCalcFindMatch(taggedTextObj.page_number, taggedTextObj.tagged_text, taggedTextObj.tag_name, taggedTextObj.color);
+				this.modifiedCalcFindMatch(taggedTextObj.page_number - 1, taggedTextObj.tagged_text, taggedTextObj.tag_name, taggedTextObj.color);
 			}
 			return this.pageTagMatches;
 		},
